@@ -2,7 +2,7 @@
 
 ## Preview version
 
-You can test the beta version of this viewer on GitHub Pages.
+You can test the beta version of this viewer on [GitHub Pages](https://kolya-ya.github.io/lections-viewer/).
 
 ## Limitations
 
