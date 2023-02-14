@@ -8,8 +8,8 @@ const LessonBlock = ({ rawContent }) => {
 
     return (
         <>
-            <div class={ styles.part__content }>
-                <div class={ styles.part__filename }>{ rawContent.url }</div>
+            <div className={ styles.part__content }>
+                <div className={ styles.part__filename }>{ rawContent.url }</div>
                 <div dangerouslySetInnerHTML={{ __html: content }}></div>
             </div>
         </>
