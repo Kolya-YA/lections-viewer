@@ -27,6 +27,7 @@ function App() {
   const [curCourse, setCurCourse] = useState('')
   const [lessons, setLessons] = useState([])
   const [curLesson, setCurLesson] = useState('')
+  const [lastCache, setLastCache] = useState(0);
   
   useEffect(() => { // TODO: add group selector
     const lsCurGroup = localStorage.curGroup
@@ -43,7 +44,7 @@ function App() {
       const lsCourseStr = localStorage[curGroup]
       if (lsCourseStr) {
         const lsCourseData = JSON.parse(lsCourseStr)
-        if (!lsCourseData?.time || Date.now() - lsCourseData?.time > (20 * 60000)) {
+        if (!lsCourseData?.time || Date.now() - lsCourseData?.time > (10 * 60000)) {
           localStorage[curGroup] = null
         } else if (lsCourseData?.coursesNameAndUrl) {
           const coursesNameAndUrl = lsCourseData.coursesNameAndUrl
@@ -59,17 +60,16 @@ function App() {
         const filtredCourses = respCources.filter(c => c.type === 'dir')
         const coursesNameAndUrl = filtredCourses.map(c => ({ name: c.name, url: c.url }))
         localStorage[curGroup] = JSON.stringify({ time: Date.now(), coursesNameAndUrl })
+        setLastCache(Date.now())
         setCourses(coursesNameAndUrl)
       })
     }
   }, [curGroup])
 
   useEffect(() => {
-    console.log('cCu', curCourse)
     if (curCourse) {
       const lsCourse = JSON.parse(localStorage[curGroup])
       if (lsCourse[curCourse]) {
-        console.log(lsCourse[curCourse])
         setLessons(lsCourse[curCourse])
         return
       }
@@ -91,7 +91,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header lastCache={lastCache} setCurCourse={setCurCourse} />
       <div className='wrapper'>
         <Nav
           courses={courses}
