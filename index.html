@@ -1,72 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cohort21 lessons</title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/solarized-dark.min.css">
-    <link rel="stylesheet" href="./styles/main.css">
-</head>
-
-<body>
-    <header class="header">
-        <h1 class="header__header">cohort21</h1>
-        <p class="header__comment">
-            v0.2 (alpha)
-            <a href="https://github.com/Kolya-YA/lections-viewer" target="_blank" rel="noopener noreferrer">Link to GitHub</a>
-        </p>
-        <hr>
-    </header>
-    <aside class="navs">
-        <div class="nav-selector">
-            <label for="cource-select">Cources</label>
-            <select class="nav-selector__select" name="coruces" id="cource-select" open>
-                <option value="">— Please select a cource —</option>
-            </select>
-        </div>
-        <div class="nav-selector">
-            <label for="lesson-select">Lessons</label>
-            <select class="nav-selector__select" name="lessons" id="lesson-select" open>
-                <option value="">— No lesson —</option>
-            </select>
-            <div class="nav-selector__update">
-                Last update: <span class="nav-selector__time">never</span>.
-                <button class="nav-selector__reset-btn">Reset cache</button>
-            </div>
-        </div>
-    </aside>
-    <hr>
-    <main>
-        <h2>Parts of lesson</h2>
-        <section class="lessons" id="lessons"></section>
-    </main>
-    <hr>
-    <footer class="footer">
-        Copyright © AIT ;-)
-    </footer>
-
-    <template id="part-template">
-        <details class="part">
-            <summary class="part__header">Template for part</summary>
-            <div class="part__content"></div>
-        </details>
-    </template>
-
-    <template id="code-template">
-        <div class="part__code">
-            <h3 class="part__code-header">file path</h3>
-            <pre><code>No code</code></pre>
-            <hr>
-        </div>
-    </template>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script type="module" src="./scripts/main.js" async defer></script>
-<script nomodule>
-    alert("Sorry! Your bowser not support JS modules")
-</script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#BFF3F3">
+    <title>WebStrom LMS</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

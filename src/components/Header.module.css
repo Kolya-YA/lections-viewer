@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: var(--block-padding);
+    background-color: var(--light-bg);
+}
+
+.header__selector {
+    padding-inline-end: var(--block-padding);
+}
+
+.header__selector>button {
+    font-size: 1.5em;
+}
+
+.header__name {
+    margin: 0;
+}

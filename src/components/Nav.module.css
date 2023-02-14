@@ -1,0 +1,5 @@
+.navs {
+    padding: 1rem;
+    background-color: var(--color01);
+    flex: 0 0 280px;
+}

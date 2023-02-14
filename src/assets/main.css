@@ -1,0 +1,36 @@
+:root {
+    --main-bg: hsl(0, 0%, 97%);
+    --light-bg: hsl(0, 0%, 100%);
+    --color01: hsl(180, 68%, 85%);
+    --color02: hsl(180, 34%, 23%);
+    --color03: hsl(20, 100%, 33%);
+    --color04: hsl(20, 100%, 64%);
+    --block-padding: 1rem;
+    --block-gap: 1rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    color: #333;
+    background-color: var(--main-bg);
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    flex-grow: 1;
+    display: flex;
+
+}
