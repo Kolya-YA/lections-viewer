@@ -37,7 +37,7 @@ function App() {
     }
     localStorage.curGroup = JSON.stringify('cohort21')
     setCurGroup(curGroup)
-  }), []
+  }, [])
   
   useEffect(() => {
     if (curGroup) {
