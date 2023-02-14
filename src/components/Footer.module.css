@@ -1,0 +1,8 @@
+.footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--light-bg);
+    padding: 1rem;
+    text-align: end;
+}

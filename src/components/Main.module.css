@@ -1,0 +1,16 @@
+.main {
+    flex: 1;
+    min-height: 100%;
+    overflow: hidden;
+    padding: var(--block-padding);
+}
+
+.main__nothing {
+    background-color: #f4f8f1;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 800;
+}
