@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Nav from './components/Nav'
 import Main from './components/Main'
 import axios from 'axios'
+import selectGroup from './services/slecectGroup'
 
 const groups = {
   'cohort21': [
@@ -14,11 +15,10 @@ const groups = {
     'https://api.github.com/repos/ait-tr/cohort_21_22_consultations/contents/'
   ],
   'cohort22': [
+    'https://api.github.com/repos/ait-tr/cohort22/contents/',
+    'https://api.github.com/repos/ait-tr/cohort_21_22_consultations/contents/'
   ]
 }
-
-const basicProgUrl = "http://localhost:3001/basicProgLessons"
-const consultUrl = "http://localhost:3001/consultLessons" 
 
 function App() {
   const [curGroup, setCurGroup] = useState('')
@@ -30,13 +30,7 @@ function App() {
   const [lastCache, setLastCache] = useState(0);
   
   useEffect(() => { // TODO: add group selector
-    const lsCurGroup = localStorage.curGroup
-    if (lsCurGroup) {
-      setCurGroup(JSON.parse(lsCurGroup))
-      return
-    }
-    localStorage.curGroup = JSON.stringify('cohort21')
-    setCurGroup(curGroup)
+    setCurGroup(selectGroup())
   }, [])
   
   useEffect(() => {
@@ -49,20 +43,19 @@ function App() {
         } else if (lsCourseData?.coursesNameAndUrl) {
           const coursesNameAndUrl = lsCourseData.coursesNameAndUrl
           setCourses(coursesNameAndUrl)
-          return
         }
+      } else {
+        const coursesRequests = groups[curGroup].map(url => axios.get(url))
+        axios.all(coursesRequests)
+          .then(resp => {
+            const respCources = [].concat(...resp.map(r => r.data))
+            const filtredCourses = respCources.filter(c => c.type === 'dir')
+            const coursesNameAndUrl = filtredCourses.map(c => ({ name: c.name, url: c.url }))
+            localStorage[curGroup] = JSON.stringify({ time: Date.now(), coursesNameAndUrl })
+            setLastCache(Date.now())
+            setCourses(coursesNameAndUrl)
+        })
       }
-
-      const coursesRequests = groups[curGroup].map(url => axios.get(url))
-      axios.all(coursesRequests)
-      .then(resp => {
-        const respCources = [].concat(...resp.map(r => r.data))
-        const filtredCourses = respCources.filter(c => c.type === 'dir')
-        const coursesNameAndUrl = filtredCourses.map(c => ({ name: c.name, url: c.url }))
-        localStorage[curGroup] = JSON.stringify({ time: Date.now(), coursesNameAndUrl })
-        setLastCache(Date.now())
-        setCourses(coursesNameAndUrl)
-      })
     }
   }, [curGroup])
 
@@ -71,21 +64,14 @@ function App() {
       const lsCourse = JSON.parse(localStorage[curGroup])
       if (lsCourse[curCourse]) {
         setLessons(lsCourse[curCourse])
-        return
+      } else {
+        axios.get(curCourse).then(resp => {
+          const { data } = resp
+          lsCourse[curCourse] = data
+          localStorage[curGroup] = JSON.stringify(lsCourse)
+          setLessons(data)
+        })
       }
-      // let lessonUrl
-      // if (curCourse === 'https://api.github.com/repos/ait-tr/cohort21/contents/basic_programming?ref=main') lessonUrl = basicProgUrl
-      // else if (curCourse === 'https://api.github.com/repos/ait-tr/cohort_21_22_consultations/contents/consultations?ref=main') lessonUrl = consultUrl
-      // else {
-      //   setLessons([])
-      //   return
-      // }
-      axios.get(curCourse).then(resp => {
-        const { data } = resp
-        lsCourse[curCourse] = data
-        localStorage[curGroup] = JSON.stringify(lsCourse)
-        setLessons(data)
-      })
     }
   }, [curCourse])
 
