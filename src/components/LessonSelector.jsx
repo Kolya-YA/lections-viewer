@@ -17,7 +17,7 @@ const LessonSelector = ({ selConfig }) => {
                 !!lessons.length &&
                 <div className={styles.lessons__list} onChange={handleChange}>
                     { lessons.map((name, i) => (
-                        <label className={styles.lessons__item} key={i}>
+                        <label className={styles.lessons__item} key={name}>
                             <input className={styles.lessons__input} type="radio" name="lessonRadio" value={name} />
                             {name}
                         </label>
