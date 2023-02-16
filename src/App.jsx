@@ -1,42 +1,49 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 import './assets/main.css'
+import { groups } from './localData'
+import { savedCurGroup } from './services/slecectGroup'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Nav from './components/Nav'
 import Main from './components/Main'
-import axios from 'axios'
-import selectGroup from './services/slecectGroup'
-
-const groups = {
-  'cohort21': [
-    // "http://localhost:3001/basicProgCourse",
-    // "http://localhost:3001/consultCourse",
-    'https://api.github.com/repos/ait-tr/cohort21/contents/',
-    'https://api.github.com/repos/ait-tr/cohort_21_22_consultations/contents/'
-  ],
-  'cohort22': [
-    'https://api.github.com/repos/ait-tr/cohort22/contents/',
-    'https://api.github.com/repos/ait-tr/cohort_21_22_consultations/contents/'
-  ]
-}
+import GroupSelector from './components/GroupSelector'
 
 function App() {
   const [curGroup, setCurGroup] = useState('')
-
   const [courses, setCourses] = useState([])
   const [curCourse, setCurCourse] = useState('')
   const [lessons, setLessons] = useState([])
   const [curLesson, setCurLesson] = useState('')
-  const [lastCache, setLastCache] = useState(0);
+
+  const [lastCache, setLastCache] = useState(0); // TODO: create localStorage control
   
+  const [isOpenGroupSel, setIsOpenGroupSel] = useState(false)
+  const handleOpenGroupSel = () => {
+    setIsOpenGroupSel(true)
+  }
+  const handleCloseGroupSel = () => setIsOpenGroupSel(false)
+
+
   useEffect(() => { // TODO: add group selector
-    setCurGroup(selectGroup())
+    let newGroup
+    if (false) { //  has group in URL param
+      // get it and set as newGroup
+    } else if (savedCurGroup(groups)) { // has saved group in local storage
+      newGroup = savedCurGroup(groups)
+    } else {
+      setIsOpenGroupSel(true)
+      // newGroup = groupSelector()
+    }
+    setCurGroup(newGroup)
   }, [])
   
   useEffect(() => {
     if (curGroup) {
       const lsCourseStr = localStorage[curGroup]
-      if (lsCourseStr) {
+      if (lsCourseStr && JSON?.parse(lsCourseStr)) {
         const lsCourseData = JSON.parse(lsCourseStr)
         if (!lsCourseData?.time || Date.now() - lsCourseData?.time > (10 * 60000)) {
           localStorage[curGroup] = null
@@ -61,7 +68,7 @@ function App() {
 
   useEffect(() => {
     if (curCourse) {
-      const lsCourse = JSON.parse(localStorage[curGroup])
+      const lsCourse = JSON?.parse(localStorage[curGroup])
       if (lsCourse[curCourse]) {
         setLessons(lsCourse[curCourse])
       } else {
@@ -73,11 +80,18 @@ function App() {
         })
       }
     }
-  }, [curCourse])
+  }, [curGroup, curCourse])
 
   return (
     <>
-      <Header lastCache={lastCache} setCurCourse={setCurCourse} />
+      <GroupSelector
+        isOpenGroupSel={isOpenGroupSel}
+        handleCloseGroupSel={handleCloseGroupSel}
+        groups={Object.keys(groups)}
+        curGroup={curGroup}
+        setCurGroup={setCurGroup}
+      />
+      <Header curGroup={curGroup} lastCache={lastCache} setCurCourse={setCurCourse} handleOpenGroupSel={handleOpenGroupSel} />
       <div className='wrapper'>
         <Nav
           courses={courses}

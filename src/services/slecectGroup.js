@@ -1,13 +1,18 @@
-const selectGroup = () => {
+export function savedCurGroup(groups) {
     const lsCurGroup = localStorage.curGroup
-    let curGroup;
     if (lsCurGroup) {
-        curGroup = JSON.parse(lsCurGroup)
-    } else {
-        curGroup = JSON.stringify('cohort21') // TODO: Add real selector
-        localStorage.curGroup = curGroup
+        const curGroup = JSON?.parse(lsCurGroup)
+        if (Object?.keys(groups).includes(curGroup)) {
+            return curGroup
+        }
     }
-    return curGroup
+    return undefined
 }
 
-export default selectGroup
+// export const groupSelector = () => {
+//     // TODO: Add real selector
+//     // const curGroup = JSON.stringify('cohort21')
+//     // localStorage.curGroup = curGroup
+//     // return curGroup 
+//     return ''
+// }

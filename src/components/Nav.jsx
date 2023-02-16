@@ -12,18 +12,12 @@ const Nav = ({ courses, curCourse, setCurCourse, lessons, curLesson, setCurLesso
         curOption: curCourse,
         setCurOption: setCurCourse
     }
-
     const lessonSelector = {
-        // lessons: [
-        //     {"name": "lesson_10", "url": "https://api.github.com/repos/ait-tr/cohort21/contents/basic_programming/lesson_10?ref=main"},
-        //     {"name": "lesson_20", "url": "https://api.github.com/repos/ait-tr/cohort21/contents/basic_programming/lesson_20?ref=main"},
-        //     {"name": "lesson_30", "url": "https://api.github.com/repos/ait-tr/cohort21/contents/basic_programming/lesson_30?ref=main"},
-        // ]
-        lessons,
+        lessons: lessons.filter(l => l !== 'lesson_example').reverse(),
         curLesson,
         setCurLesson,
     }
- 
+    
     return (
         <nav className={styles.navs}>
             <ModuleSelector selConfig={courseSelector} selected={''} />
