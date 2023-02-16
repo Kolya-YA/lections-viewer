@@ -38,7 +38,7 @@ function App() {
       // newGroup = groupSelector()
     }
     setCurGroup(newGroup)
-  }, [])
+  }, [curGroup])
   
   useEffect(() => {
     if (curGroup) {
