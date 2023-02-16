@@ -1,0 +1,14 @@
+.dialog {
+    background-color: var(--main-bg);
+    border: solid 2px var(--color04);
+    border-radius: 4px;
+}
+
+.dialog::backdrop {
+    backdrop-filter: blur(4px) brightness(60%) grayscale(70%);
+    -webkit-backdrop-filter: blur(4px) brightness(60%) grayscale(70%);
+}
+
+.dialog__label {
+    display: block;
+}
