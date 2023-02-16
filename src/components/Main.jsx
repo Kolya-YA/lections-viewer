@@ -14,6 +14,8 @@ const Main = ({ curLesson, lName }) => {
                     const { data } = resp
                     setLMetadata(data)
                 })
+        } else {
+            setLMetadata({})
         }
     }, [curLesson , lName])
 
