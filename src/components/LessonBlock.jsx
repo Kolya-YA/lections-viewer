@@ -25,7 +25,16 @@ function prepareContent(rawContent) {
             return marked(rawContent.data)
         case 'java':
             return `<pre><code>${hljs.highlight(rawContent.data, {language: 'java'}).value}</code></pre>`
+        case 'html':
+            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'html'}).value}</code></pre>`
+        case 'css':
+            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'css'}).value}</code></pre>`
+        case 'scss':
+            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'scss'}).value}</code></pre>`
+        case 'js':
+        case 'jsx':
+            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'javascript'}).value}</code></pre>`
         default:
-            return (rawContent.data)
+            return `<pre><code>${hljs.highlight(rawContent.data, {language: blockType})}</code></pre>`
     }
 }
