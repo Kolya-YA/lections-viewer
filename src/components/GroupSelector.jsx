@@ -21,9 +21,9 @@ const GroupSelector = ({ isOpenGroupSel, handleCloseGroupSel, groups, curGroup, 
 
     return (
         <dialog ref={dialog} className={styles.dialog} onClose={handleCloseGroupSel}>
-            <button onClick={handleCloseGroupSel}>Close (Esc)</button>
+            <button className={styles.dialog__closeBtn} onClick={handleCloseGroupSel} type="button">×</button>
             <form onSubmit={handleChoice}>
-                <h4>Select group</h4>
+                <h4 className={styles.dialog__header}>Select group</h4>
                 { groups.map(g => {
                     return (
                     <label className={styles.dialog__label} key={g}>
@@ -31,7 +31,7 @@ const GroupSelector = ({ isOpenGroupSel, handleCloseGroupSel, groups, curGroup, 
                         {g}
                     </label>
                 )}) }
-                <button onClick={handleCloseGroupSel}>Select</button>
+                <button className={styles.dialog__selBtn} onClick={handleCloseGroupSel}>Select</button>
             </form>
         </dialog>
     )

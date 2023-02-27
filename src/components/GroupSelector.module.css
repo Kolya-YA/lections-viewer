@@ -1,4 +1,5 @@
 .dialog {
+    min-width: 220px;
     background-color: var(--main-bg);
     border: solid 2px var(--color04);
     border-radius: 4px;
@@ -9,6 +10,31 @@
     -webkit-backdrop-filter: blur(4px) brightness(60%) grayscale(70%);
 }
 
+.dialog__closeBtn {
+    display: block;
+    margin-inline-start: auto;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.dialog__header {
+    margin-block: .5em;
+
+}
+
 .dialog__label {
     display: block;
+    margin-block-end: .2em;
+}
+
+.dialog__label input{
+    margin-inline-end: .5em;
+}
+
+.dialog__selBtn {
+    display: block;
+    font-size: 1.1em;
+    margin-inline: auto;
+    margin-block-start: 1em;
+    padding: 4px 14px;
 }
