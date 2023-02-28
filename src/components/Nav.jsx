@@ -6,7 +6,7 @@ import LessonSelector from "./LessonSelector"
 const Nav = ({ courses, curCourse, setCurCourse, lessons, curLesson, setCurLesson }) => {
     const courseSelector = {
         id: "course-select",
-        label: "Courses",
+        label: "Select a course",
         defOption: "— Please select a cource —",
         options: courses.map(c => ({ name: c.name, url: c.url })),
         curOption: curCourse,

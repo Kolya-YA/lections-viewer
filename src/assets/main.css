@@ -1,10 +1,12 @@
 :root {
-    --main-bg: hsl(0, 0%, 97%);
-    --light-bg: hsl(0, 0%, 100%);
-    --color01: hsl(180, 68%, 85%);
-    --color02: hsl(180, 34%, 23%);
-    --color03: hsl(20, 100%, 33%);
-    --color04: hsl(20, 100%, 64%);
+    --main-bg: hsl(0, 0%, 96%);
+    --light-bg: hsl(76, 18%, 94%);
+    --green-bg: hsl(76, 18%, 61%);
+    --color01: hsl(140, 2%, 52%);
+    --color02: hsl(18, 23%, 25%);
+    --color03: hsl(14, 84%, 69%);
+    --light-text: hsl(26, 93%, 96%);;
+    --dark-text: hsl(26, 93%, 10%);;
     --block-padding: 1rem;
     --block-gap: 1rem;
 }
@@ -19,7 +21,7 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
-    color: #333;
+    color: var(--dark-text);
     background-color: var(--main-bg);
 }
 

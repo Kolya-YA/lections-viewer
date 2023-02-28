@@ -1,5 +1,5 @@
 .lesson {
-    max-width: 96ch;
+    max-width: 112ch;
 }
 .lesson__header {
     display: flex;
@@ -9,11 +9,12 @@
 
 .lesson__header h2 {
     margin-block-start: .5em;
+    color: var(--color02);
 }
 
 .lesson__error {
     color: var(--color03);
-    background-color: #f4f8f1;
+    background-color: var(--main-bg);
     min-height: 100%;
     display: flex;
     justify-content: center;

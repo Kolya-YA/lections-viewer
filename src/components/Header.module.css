@@ -2,17 +2,20 @@
     display: flex;
     align-items: center;
     padding: var(--block-padding);
-    background-color: var(--light-bg);
+    color: var(--light-text);
+    background-color: var(--green-bg);
+    border-bottom: 2px solid var(--color03);
 }
 
 .header__selector {
     padding-inline-end: var(--block-padding);
 }
 
-.header__selector>button {
+.header__selector > button {
     font-size: 1.5em;
 }
 
 .header__name {
     margin: 0;
+    letter-spacing: .5px;
 }
