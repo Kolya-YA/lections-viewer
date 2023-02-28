@@ -4,7 +4,7 @@
 
 .part__header {
     padding: 1rem;
-    color: var(--color02);
+    color: var(--light-text);
     background-color: var(--color01);
     cursor: pointer;
 }
@@ -13,7 +13,6 @@
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--color03);
-    /* letter-spacing: .1rem; */
     text-transform: uppercase;
 }
 

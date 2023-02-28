@@ -2,7 +2,8 @@
     margin-top: auto;
     display: flex;
     justify-content: space-between;
-    background-color: var(--light-bg);
-    padding: 1rem;
-    text-align: end;
+    color: var(--dark-text);
+    background-color: var(--green-bg);
+    padding: var(--block-padding);
+    border-top: 2px solid var(--color03);
 }

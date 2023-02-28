@@ -1,7 +1,7 @@
 .dialog {
     min-width: 220px;
     background-color: var(--main-bg);
-    border: solid 2px var(--color04);
+    border: solid 3px var(--color03);
     border-radius: 4px;
 }
 
