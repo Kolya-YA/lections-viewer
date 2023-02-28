@@ -3,16 +3,16 @@
 }
 
 .part__header {
-    padding: 1rem;
+    padding: var(--block-padding);
     color: var(--light-text);
     background-color: var(--color01);
     cursor: pointer;
 }
 
 .part__header::first-letter {
-    font-size: 1.3rem;
+    /* font-size: 1.3rem;
     font-weight: 600;
-    color: var(--color03);
+    color: var(--color03); */
     text-transform: uppercase;
 }
 
@@ -31,6 +31,10 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.1em;
     font-weight: 600;
+}
+
+.part__filename > a {
+    color: inherit;
 }
 
 .part__content>h2 {

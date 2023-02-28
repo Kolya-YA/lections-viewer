@@ -31,7 +31,9 @@ const LessonBlock = ({ rawContent }) => {
     return (
         <>
             <div className={ styles.part__content }>
-                <div className={ styles.part__filename }>{ rawContent.url }</div>
+                <div className={ styles.part__filename }>
+                    <a href={ rawContent.linkUrl } target="_blank" rel="noopener noreferrer">{ rawContent.fileUrl }</a>
+                </div>
                 <div dangerouslySetInnerHTML={{ __html: content }}></div>
             </div>
         </>
@@ -41,7 +43,7 @@ const LessonBlock = ({ rawContent }) => {
 export default LessonBlock
 
 function prepareContent(rawContent) {
-    const blockType = rawContent.url.split('.').at(-1)
+    const blockType = rawContent.fileUrl.split('.').at(-1)
     switch (blockType) {
         case 'md':
             return marked(rawContent.data)

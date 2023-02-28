@@ -14,7 +14,11 @@ const LessonPart = ({ name, baseUrl, source }) => {
         const allReq = locUrls.map(url => axios.get(baseUrl + url))
         axios.all(allReq)
             .then(res => {
-                const rcArr = res.map(r => ({ url: r.request.responseURL.split(baseUrl)[1], data: r.data }))
+                const rcArr = res.map(r => ({ 
+                    linkUrl: r.request.responseURL,
+                    fileUrl: r.request.responseURL.split(baseUrl)[1],
+                    data: r.data
+                }))
                 setRawContent(rcArr)
             })
             .catch(e => {
