@@ -29,9 +29,10 @@ const LessonPart = ({ name, baseUrl, source }) => {
     return (
         !!rawContent.length &&
         <details className={styles.part} open={name === 'plan'}>
-            <summary className={styles.part__header}>{name}{!rawContent.length && ' (no content)'}
+            <summary className={styles.part__header}>
+                {name}{!rawContent.length && ' (no content)'}
             </summary>
-            {rawContent.map(rc => <LessonBlock key={rc.url} rawContent={rc} />)}
+            {rawContent.map(rc => <LessonBlock key={rc.linkUrl} rawContent={rc} />)}
         </details>
     )
 }
