@@ -11,7 +11,7 @@ const GroupSelector = ({ isOpenGroupSel, handleCloseGroupSel, groups, curGroup, 
     }, [isOpenGroupSel])
 
     const handleChoice = e => {
-        e.preventDefault();
+        e.preventDefault()
         const newGroup = e.target.curGroup.value
         if (newGroup !== curGroup) {
             setCurGroup(newGroup)
@@ -26,11 +26,11 @@ const GroupSelector = ({ isOpenGroupSel, handleCloseGroupSel, groups, curGroup, 
                 <h4 className={styles.dialog__header}>Select group</h4>
                 { groups.map(g => {
                     return (
-                    <label className={styles.dialog__label} key={g}>
-                        <input type="radio" name="curGroup" value={g} defaultChecked={(g === curGroup)}/>
-                        {g}
-                    </label>
-                )}) }
+                        <label className={styles.dialog__label} key={g}>
+                            <input type="radio" name="curGroup" value={g} defaultChecked={(g === curGroup)}/>
+                            {g}
+                        </label>
+                    )}) }
                 <button className={styles.dialog__selBtn} onClick={handleCloseGroupSel}>Select</button>
             </form>
         </dialog>

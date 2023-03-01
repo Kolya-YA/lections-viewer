@@ -22,7 +22,7 @@ hljs.registerLanguage('json', json)
 import sql from 'highlight.js/lib/languages/sql'
 hljs.registerLanguage('sql', sql)
 
-import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/github.css'
 import styles from './LessonPart.module.css'
 
 const LessonBlock = ({ rawContent }) => {
@@ -45,25 +45,25 @@ export default LessonBlock
 function prepareContent(rawContent) {
     const blockType = rawContent.fileUrl.split('.').at(-1)
     switch (blockType) {
-        case 'md':
-            return marked(rawContent.data)
-        case 'java':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'java'}).value}</code></pre>`
-        case 'xml':
-        case 'html':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'xml'}).value}</code></pre>`
-        case 'css':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'css'}).value}</code></pre>`
-        case 'scss':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'scss'}).value}</code></pre>`
-        case 'js':
-        case 'jsx':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'javascript'}).value}</code></pre>`
-        case 'json':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'json'}).value}</code></pre>`
-        case 'sql':
-            return `<pre><code>${hljs.highlight(rawContent.data, {language: 'sql'}).value}</code></pre>`
-        default:
-            return `<pre><code>${hljs.highlightAuto(rawContent.data)}</code></pre>`
+    case 'md':
+        return marked(rawContent.data)
+    case 'java':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'java' }).value}</code></pre>`
+    case 'xml':
+    case 'html':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'xml' }).value}</code></pre>`
+    case 'css':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'css' }).value}</code></pre>`
+    case 'scss':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'scss' }).value}</code></pre>`
+    case 'js':
+    case 'jsx':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'javascript' }).value}</code></pre>`
+    case 'json':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'json' }).value}</code></pre>`
+    case 'sql':
+        return `<pre><code>${hljs.highlight(rawContent.data, { language: 'sql' }).value}</code></pre>`
+    default:
+        return `<pre><code>${hljs.highlightAuto(rawContent.data)}</code></pre>`
     }
 }

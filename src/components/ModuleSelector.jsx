@@ -18,7 +18,7 @@ const ModuleSelector = ({ selConfig }) => {
                             key={i}
                             className={styles.selector__option} 
                             value={o.url}>
-                                {o.name.replace('_', ' ')}
+                            {o.name.replace('_', ' ')}
                         </option>
                     )
                 }

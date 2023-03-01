@@ -6,11 +6,12 @@ import LessonBlock from "./LessonBlock"
 const LessonPart = ({ name, baseUrl, source }) => {
 
     const [rawContent, setRawContent] = useState([])
-    const [extLinks, setExtLinks] = useState([])  
+    // const [extLinks, setExtLinks] = useState([])  
     
     useEffect(() => {
         setRawContent([])
-        const [locUrls, extUrls] = urlsData(source, baseUrl)
+        // const [locUrls, extUrls] = urlsData(source, baseUrl)
+        const [locUrls] = urlsData(source, baseUrl)
         const allReq = locUrls.map(url => axios.get(baseUrl + url))
         axios.all(allReq)
             .then(res => {
@@ -49,7 +50,7 @@ function urlsData(source, baseUrl) {
             else if (s.slice(-4).toLowerCase() === '.pdf') extUrls.push(baseUrl + s)
             else locUrls.push(s)
         }
-    });
+    })
 
     return [locUrls, extUrls]
 }

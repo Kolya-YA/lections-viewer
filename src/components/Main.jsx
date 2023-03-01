@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import styles from './Main.module.css'
-import Lesson from "./Lesson"
+import Lesson from './Lesson'
 
-const Main = ({ curLesson, lName }) => {
+const Main= ({ curLesson, lName }) => {
     const [lMetadata, setLMetadata] = useState({})
     const baseUrl = curLesson ? urlConverter(curLesson) : ''
-    
+
     useEffect(() => {
         if (baseUrl) {
-            axios.get(baseUrl + 'metadata.json')
-                .then(resp => {
+            axios.get(`${baseUrl}metadata.json`)
+                .then((resp) => {
                     const { data } = resp
                     setLMetadata(data)
                 })
         } else {
-            setLMetadata({})
-        }
-    }, [curLesson , lName])
+            setLMetadata({})        }
+    }, [curLesson, lName])
 
     return (
         <main className={styles.main}>
-            {curLesson
-                ? <Lesson lMetadata={lMetadata} baseUrl={baseUrl} lName={lName} /> 
-                : <div className={styles.main__nothing}>Nothing selected</div>
+            {
+                curLesson
+                    ? <Lesson lMetadata={lMetadata} baseUrl={baseUrl} lName={lName} /> 
+                    : <div className={styles.main__nothing}>Nothing selected</div>
             }
         </main>
     )
@@ -37,11 +37,11 @@ function urlConverter(inpUrl) {
     const urlReplacers = [
         'api.github', 'raw.githubusercontent',
         'contents', urlParams.get('ref'),
-        'repos/', ''
+        'repos/', '',
     ]
-    return inpUrl
+    return `${inpUrl
         .replace(urlReplacers[0], urlReplacers[1])
         .replace(urlReplacers[2], urlReplacers[3])
         .replace(urlReplacers[4], urlReplacers[5])
-        .split('?')[0] + '/'
+        .split('?')[0]}/`
 }

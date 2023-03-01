@@ -2,7 +2,8 @@ import styles from "./LessonSelector.module.css"
 
 const LessonSelector = ({ selConfig }) => {
     // console.log("selector config", selConfig);
-    const { lessons, curLesson, setCurLesson } = selConfig
+    // const { lessons, curLesson, setCurLesson } = selConfig
+    const { lessons, setCurLesson } = selConfig
     
     const handleChange = ({ target }) => {
         setCurLesson(target.value)
@@ -16,7 +17,7 @@ const LessonSelector = ({ selConfig }) => {
             {
                 !!lessons.length &&
                 <div className={styles.lessons__list} onChange={handleChange}>
-                    { lessons.map((name, i) => (
+                    { lessons.map((name) => (
                         <label className={styles.lessons__item} key={name}>
                             <input
                                 className={styles.lessons__input}
