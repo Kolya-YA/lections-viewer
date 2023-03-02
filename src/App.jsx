@@ -47,25 +47,26 @@ const App = () => {
             if (lsCourseStr && JSON.parse(lsCourseStr)) {
                 const lsCourseData = JSON.parse(lsCourseStr)
                 if (!lsCourseData?.time || Date.now() - lsCourseData?.time > (10 * 60000)) {
-                    localStorage[curGroup] = null
+                    localStorage[curGroup] = ''
                 } else if (lsCourseData?.coursesNameAndUrl) {
                     const coursesNameAndUrl = lsCourseData.coursesNameAndUrl
                     setCurCourse('')
                     setCourses(coursesNameAndUrl)
+                    return
                 }
-            } else {
-                const coursesRequests = groups[curGroup].map(url => axios.get(url))
-                axios.all(coursesRequests)
-                    .then(resp => {
-                        const respCources = [].concat(...resp.map(r => r.data))
-                        const filtredCourses = respCources.filter(c => c.type === 'dir')
-                        const coursesNameAndUrl = filtredCourses.map(c => ({ name: c.name, url: c.url }))
-                        localStorage[curGroup] = JSON.stringify({ time: Date.now(), coursesNameAndUrl })
-                        setLastCache(Date.now())
-                        setCurCourse('')
-                        setCourses(coursesNameAndUrl)
-                    })
             }
+            
+            const coursesRequests = groups[curGroup].map(url => axios.get(url))
+            axios.all(coursesRequests)
+                .then(resp => {
+                    const respCources = [].concat(...resp.map(r => r.data))
+                    const filtredCourses = respCources.filter(c => c.type === 'dir')
+                    const coursesNameAndUrl = filtredCourses.map(c => ({ name: c.name, url: c.url }))
+                    localStorage[curGroup] = JSON.stringify({ time: Date.now(), coursesNameAndUrl })
+                    setLastCache(Date.now())
+                    setCurCourse('')
+                    setCourses(coursesNameAndUrl)
+                })
         }
     }, [curGroup])
 
