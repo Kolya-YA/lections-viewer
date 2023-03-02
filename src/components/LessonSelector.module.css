@@ -27,12 +27,22 @@
     text-transform: uppercase;
 }
 
-.lessons__input {
-    display: none;
+.lessons__item:hover {
+    background-color: var(--color03);
+}
+
+.lessons__item:focus-within {
+    outline: var(--color03) solid;
 }
 
 .lessons__item:has(.lessons__input:checked)  {
     color: var(--light-text);
     font-weight: 200;
     background-color: var(--color02);
+}
+
+.lessons__input {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }

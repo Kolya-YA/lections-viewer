@@ -1,5 +1,7 @@
 .part {
     margin-block-end: 1em;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .part__header {
@@ -9,11 +11,26 @@
     cursor: pointer;
 }
 
+.part[open] > .part__header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .part__header::first-letter {
-    /* font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--color03); */
     text-transform: uppercase;
+}
+
+.part__header::marker,
+.part__header::-webkit-details-marker {
+    color: var(--color03);
+}
+
+.part:focus-within {    
+    outline: var(--color03) solid;
+}
+
+.part__header:focus {    
+    outline: none;
 }
 
 .part__content {
@@ -37,7 +54,7 @@
     color: inherit;
 }
 
-.part__content>h2 {
+.part__content > h2 {
     color: var(--color03);
 }
 

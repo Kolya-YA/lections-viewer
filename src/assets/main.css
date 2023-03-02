@@ -11,8 +11,10 @@
     --block-gap: 1rem;
 }
 
-* {
-    box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 body {

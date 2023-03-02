@@ -1,7 +1,6 @@
 import styles from "./LessonSelector.module.css"
 
 const LessonSelector = ({ selConfig }) => {
-    // console.log("selector config", selConfig);
     // const { lessons, curLesson, setCurLesson } = selConfig
     const { lessons, setCurLesson } = selConfig
     
@@ -16,7 +15,7 @@ const LessonSelector = ({ selConfig }) => {
             </h2>
             {
                 !!lessons.length &&
-                <div className={styles.lessons__list} onChange={handleChange}>
+                <form className={styles.lessons__list} onChange={handleChange}>
                     { lessons.map((name) => (
                         <label className={styles.lessons__item} key={name}>
                             <input
@@ -27,7 +26,7 @@ const LessonSelector = ({ selConfig }) => {
                             {name.replace('_', ' ')}
                         </label>
                     ))}
-                </div>
+                </form>
             }
         </div>
     )
