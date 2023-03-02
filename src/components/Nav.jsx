@@ -1,5 +1,5 @@
 import styles from './Nav.module.css'
-import ModuleSelector from "./moduleSelector"
+import ModuleSelector from "./ModuleSelector"
 import LessonSelector from "./LessonSelector"
    
 
