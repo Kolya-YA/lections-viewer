@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { init, trackPages } from 'insights-js'
 
 import './assets/main.css'
 import { groups } from './localData'
@@ -12,6 +13,9 @@ import Main from './components/Main'
 import GroupSelector from './components/GroupSelector'
 
 const App = () => {
+    init('vn0UWjIfk6yvZCcm')
+    trackPages()
+    
     const [curGroup, setCurGroup] = useState('')
     const [courses, setCourses] = useState([])
     const [curCourse, setCurCourse] = useState('')
